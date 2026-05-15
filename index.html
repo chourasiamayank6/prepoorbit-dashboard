@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- saved from url=(0063)file:///C:/Users/thinkpad/Downloads/prepoorbit_dashboard_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PrepOrbit — Where learning moves you forward</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="./index_files/css2" rel="stylesheet">
 <style>
 :root {
   --ink: #0E0C1A;
@@ -385,16 +385,16 @@ body.is-admin .item-card:hover .drive-chip { display: flex; }
       <span class="land-logo-text">PrepOrbit</span>
     </div>
     <h1 class="land-tagline">Where learning<br><em>moves you forward</em></h1>
-    <p class="land-sub">Your complete exam preparation hub — worksheets, solutions & more.</p>
+    <p class="land-sub">Your complete exam preparation hub — worksheets, solutions &amp; more.</p>
     <div class="login-cards">
-      <div class="login-card" onclick="openLogin('admin')">
+      <div class="login-card" onclick="openLogin(&#39;admin&#39;)">
         <div class="card-icon">🛡️</div>
         <div class="card-role">Admin Access</div>
         <div class="card-title">Educator Portal</div>
         <div class="card-desc">Upload content, manage folders, and oversee student resources.</div>
         <div class="card-arrow">→</div>
       </div>
-      <div class="login-card student" onclick="openLogin('student')">
+      <div class="login-card student" onclick="openLogin(&#39;student&#39;)">
         <div class="card-icon">🎓</div>
         <div class="card-role">Student Access</div>
         <div class="card-title">Study Dashboard</div>
@@ -408,7 +408,7 @@ body.is-admin .item-card:hover .drive-chip { display: flex; }
 <!-- ══════════════ LOGIN MODAL ══════════════ -->
 <div class="modal-overlay" id="login-modal">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('login-modal')">✕</button>
+    <button class="modal-close" onclick="closeModal(&#39;login-modal&#39;)">✕</button>
     <div class="modal-header">
       <span class="modal-role-badge badge-admin" id="login-badge">ADMIN</span>
     </div>
@@ -416,11 +416,11 @@ body.is-admin .item-card:hover .drive-chip { display: flex; }
     <p style="font-size:13px;color:var(--muted);margin:6px 0 24px">Sign in to access your dashboard</p>
     <div class="form-group">
       <label class="form-label">USERNAME</label>
-      <input class="form-input" type="text" id="login-user" placeholder="Enter username" autocomplete="off"/>
+      <input class="form-input" type="text" id="login-user" placeholder="Enter username" autocomplete="off">
     </div>
     <div class="form-group">
       <label class="form-label">PASSWORD</label>
-      <input class="form-input" type="password" id="login-pass" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()"/>
+      <input class="form-input" type="password" id="login-pass" placeholder="Enter password" onkeydown="if(event.key===&#39;Enter&#39;)doLogin()">
     </div>
     <div class="form-error" id="login-error">Incorrect username or password. Please try again.</div>
     <button class="btn-login" id="login-btn" onclick="doLogin()">Sign In</button>
@@ -431,7 +431,7 @@ body.is-admin .item-card:hover .drive-chip { display: flex; }
 <!-- ══════════════ CHANGE PASSWORD MODAL ══════════════ -->
 <div class="modal-overlay" id="changepw-modal">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('changepw-modal')">✕</button>
+    <button class="modal-close" onclick="closeModal(&#39;changepw-modal&#39;)">✕</button>
     <h2 class="modal-title" style="margin-bottom:8px">Change Password</h2>
     <p class="changepw-note">Password changes are managed through your Google account linked to <strong>chourasiamayank6@gmail.com</strong>. Click below to open Google Account security settings.</p>
     <a href="https://myaccount.google.com/security" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:12px;">Open Google Account Security ↗</a>
@@ -439,15 +439,15 @@ body.is-admin .item-card:hover .drive-chip { display: flex; }
       <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">Or reset your PrepOrbit dashboard credentials below:</p>
       <div class="form-group">
         <label class="form-label">CURRENT PASSWORD</label>
-        <input class="form-input" type="password" id="pw-current" placeholder="Current password"/>
+        <input class="form-input" type="password" id="pw-current" placeholder="Current password">
       </div>
       <div class="form-group">
         <label class="form-label">NEW PASSWORD</label>
-        <input class="form-input" type="password" id="pw-new" placeholder="New password (min 6 chars)"/>
+        <input class="form-input" type="password" id="pw-new" placeholder="New password (min 6 chars)">
       </div>
       <div class="form-group">
         <label class="form-label">CONFIRM NEW PASSWORD</label>
-        <input class="form-input" type="password" id="pw-confirm" placeholder="Confirm new password"/>
+        <input class="form-input" type="password" id="pw-confirm" placeholder="Confirm new password">
       </div>
       <div class="form-error" id="pw-error"></div>
       <button class="btn-login" onclick="doChangePw()">Update Password</button>
@@ -458,15 +458,15 @@ body.is-admin .item-card:hover .drive-chip { display: flex; }
 <!-- ══════════════ EDIT FILE MODAL (Admin only) ══════════════ -->
 <div class="modal-overlay" id="edit-modal">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('edit-modal')">✕</button>
+    <button class="modal-close" onclick="closeModal(&#39;edit-modal&#39;)">✕</button>
     <h2 class="modal-title" style="margin-bottom:8px">Edit / Replace File</h2>
     <p class="changepw-note">To edit or replace this file, please use Google Drive directly. Admin authentication is required.</p>
     <div class="form-group" style="margin-top:8px">
       <label class="form-label">ADMIN PASSWORD</label>
-      <input class="form-input" type="password" id="edit-pw" placeholder="Enter admin password"/>
+      <input class="form-input" type="password" id="edit-pw" placeholder="Enter admin password">
     </div>
     <div class="form-error" id="edit-error"></div>
-    <button class="btn-login" onclick="doEditAuth()">Authenticate & Open Drive</button>
+    <button class="btn-login" onclick="doEditAuth()">Authenticate &amp; Open Drive</button>
   </div>
 </div>
 
@@ -496,11 +496,34 @@ body.is-admin .item-card:hover .drive-chip { display: flex; }
 <div class="toast" id="toast"></div>
 
 <script>
-// ── CREDENTIALS ──
-const CREDS = {
-  admin:   { username: "prepoorbit_admin",   password: "Admin@2024", role: "admin",   label: "Administrator" },
-  student: { username: "prepoorbit_student", password: "Student@2024", role: "student", label: "Student" }
-};
+// ── CREDENTIALS — fetched from Google Sheet ──
+let SHEET_CREDS = [];
+
+async function fetchCredentials() {
+  if (!APPS_SCRIPT_URL) return false;
+  try {
+    const res = await fetch(APPS_SCRIPT_URL + '?type=credentials');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    if (Array.isArray(data) && data.length > 0) {
+      SHEET_CREDS = data;
+      console.log('Credentials loaded:', SHEET_CREDS.length);
+      return true;
+    }
+    return false;
+  } catch(e) {
+    console.warn('Could not fetch credentials:', e.message);
+    return false;
+  }
+}
+
+function findCredential(username, password) {
+  return SHEET_CREDS.find(c =>
+    c.username.trim() === username.trim() &&
+    c.password.trim() === password.trim() &&
+    c.active === true
+  );
+}
 
 // ── DRIVE DATA ──
 const DRIVE = {
@@ -573,6 +596,7 @@ function applyIcons(node) {
 // ── STATE ──
 let currentRole = null;
 let currentLoginType = null;
+let currentUser = null;
 let activePath = [];
 let sidebarOpen = new Set();
 let pendingEditUrl = null;
@@ -655,16 +679,45 @@ function openLogin(type) {
   setTimeout(() => document.getElementById('login-user').focus(), 100);
 }
 
-function doLogin() {
+async function doLogin() {
   const u = document.getElementById('login-user').value.trim();
-  const p = document.getElementById('login-pass').value;
-  const cred = CREDS[currentLoginType];
-  if(u === cred.username && p === cred.password) {
+  const p = document.getElementById('login-pass').value.trim();
+  const btn = document.getElementById('login-btn');
+  const errEl = document.getElementById('login-error');
+
+  btn.textContent = 'Signing in…';
+  btn.disabled = true;
+  errEl.classList.remove('show');
+
+  // Always fetch fresh credentials on login
+  const fetched = await fetchCredentials();
+
+  if (!fetched || SHEET_CREDS.length === 0) {
+    btn.textContent = 'Sign In';
+    btn.disabled = false;
+    errEl.textContent = 'Could not connect to credentials server. Please try again.';
+    errEl.classList.add('show');
+    return;
+  }
+
+  const match = findCredential(u, p);
+
+  btn.textContent = 'Sign In';
+  btn.disabled = false;
+
+  if (match) {
+    if (match.role !== currentLoginType) {
+      errEl.textContent = `This is a ${match.role} account. Please use the ${match.role} login card.`;
+      errEl.classList.add('show');
+      return;
+    }
     closeModal('login-modal');
-    currentRole = currentLoginType;
+    currentRole = match.role;
+    currentUser = match.username;
     launchApp();
   } else {
-    document.getElementById('login-error').classList.add('show');
+    errEl.textContent = 'Incorrect username or password. Please try again.';
+    errEl.classList.add('show');
   }
 }
 
@@ -672,23 +725,20 @@ function doLogout() {
   document.getElementById('app').classList.remove('open');
   document.getElementById('landing').style.display = '';
   document.body.classList.remove('is-admin','is-student');
-  currentRole = null; activePath = []; sidebarOpen.clear();
+  currentRole = null; currentUser = null; activePath = []; sidebarOpen.clear();
 }
 
-// ── APP LAUNCH ──
 async function launchApp() {
   document.getElementById('landing').style.display = 'none';
   document.getElementById('app').classList.add('open');
   document.body.classList.toggle('is-admin', currentRole === 'admin');
   document.body.classList.toggle('is-student', currentRole === 'student');
-  const cred = CREDS[currentRole];
-  document.getElementById('nav-user-label').textContent = cred.label;
+  document.getElementById('nav-user-label').textContent = currentUser;
   const pill = document.getElementById('nav-role-pill');
   pill.textContent = currentRole.toUpperCase();
   pill.className = 'nav-role-pill ' + (currentRole === 'admin' ? 'badge-admin' : 'badge-student');
   document.getElementById('nav-changepw-btn').style.display = currentRole === 'admin' ? '' : 'none';
   activePath = [];
-  // Try to fetch live data from Apps Script; fall back to hardcoded if not set up yet
   await fetchLiveData();
   renderSidebar();
   renderHome();
@@ -978,16 +1028,6 @@ function doEditAuth() {
   }
 }
 
-// ── CHANGE PASSWORD ──
-function openChangePw() {
-  closeModal('login-modal');
-  document.getElementById('pw-current').value = '';
-  document.getElementById('pw-new').value = '';
-  document.getElementById('pw-confirm').value = '';
-  document.getElementById('pw-error').classList.remove('show');
-  openModal('changepw-modal');
-}
-
 function doChangePw() {
   const cur = document.getElementById('pw-current').value;
   const nw  = document.getElementById('pw-new').value;
@@ -995,21 +1035,34 @@ function doChangePw() {
   const err = document.getElementById('pw-error');
   err.style.display = 'none';
 
-  const role = currentRole || currentLoginType || 'admin';
-  const cred = CREDS[role];
-
-  if(cur !== cred.password) {
+  const match = SHEET_CREDS.find(c => c.username === currentUser);
+  if (!match || cur !== match.password) {
     err.textContent = 'Current password is incorrect.'; err.style.display = 'block'; return;
   }
-  if(nw.length < 6) {
+  if (nw.length < 6) {
     err.textContent = 'New password must be at least 6 characters.'; err.style.display = 'block'; return;
   }
-  if(nw !== con) {
+  if (nw !== con) {
     err.textContent = 'Passwords do not match.'; err.style.display = 'block'; return;
   }
-  CREDS[role].password = nw;
+  // Update locally
+  match.password = nw;
   closeModal('changepw-modal');
-  showToast('✅ Password updated successfully');
+  showToast('✅ Password updated — please update it in your Google Sheet too');
+}
+
+function doEditAuth() {
+  const pw = document.getElementById('edit-pw').value;
+  const adminCred = SHEET_CREDS.find(c => c.role === 'admin');
+  if (adminCred && pw === adminCred.password) {
+    closeModal('edit-modal');
+    window.open(pendingEditUrl, '_blank');
+    showToast('✅ Authenticated — Drive opened');
+  } else {
+    const e = document.getElementById('edit-error');
+    e.textContent = 'Incorrect admin password.';
+    e.classList.add('show');
+  }
 }
 
 // ── INIT ──
@@ -1034,5 +1087,6 @@ document.addEventListener('contextmenu', e => {
   }
 });
 </script>
-</body>
-</html>
+
+
+</body></html>

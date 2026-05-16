@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0061)file:///C:/Users/thinkpad/Downloads/prepoorbit_dashboard.html -->
+<!-- saved from url=(0063)file:///C:/Users/thinkpad/Downloads/prepoorbit_dashboard_1.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -614,8 +614,26 @@ async function fetchLiveData() {
     const res = await fetch(APPS_SCRIPT_URL);
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const raw = await res.json();
-    // The root returned is the Anthropic folder — we want its children
-    LIVE_DRIVE = raw.children || DRIVE;
+
+    // The root returned is the Anthropic folder itself
+    // We need its children as the top level
+    let topLevel = null;
+    if (raw.children) {
+      // Check if root is the Anthropic folder — use its children
+      topLevel = raw.children;
+    } else {
+      topLevel = raw;
+    }
+
+    // Remove any file entries at top level — we only want folders
+    const foldersOnly = {};
+    for (const [key, val] of Object.entries(topLevel)) {
+      if (!val.type || val.type !== 'file') {
+        foldersOnly[key] = val;
+      }
+    }
+
+    LIVE_DRIVE = foldersOnly;
     applyIcons({ children: LIVE_DRIVE, name: 'root' });
     hideLoadingOverlay();
     showToast('✅ Dashboard synced with latest Drive files');

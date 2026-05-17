@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0063)file:///C:/Users/thinkpad/Downloads/prepoorbit_dashboard_1.html -->
+<!-- saved from url=(0063)file:///C:/Users/thinkpad/Downloads/prepoorbit_dashboard_2.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -615,25 +615,15 @@ async function fetchLiveData() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const raw = await res.json();
 
-    // The root returned is the Anthropic folder itself
+    // Raw returns the Anthropic root folder
     // We need its children as the top level
-    let topLevel = null;
-    if (raw.children) {
-      // Check if root is the Anthropic folder — use its children
-      topLevel = raw.children;
+    if (raw && raw.children && typeof raw.children === 'object') {
+      LIVE_DRIVE = raw.children;
     } else {
-      topLevel = raw;
+      console.warn('Unexpected structure:', raw);
+      return false;
     }
 
-    // Remove any file entries at top level — we only want folders
-    const foldersOnly = {};
-    for (const [key, val] of Object.entries(topLevel)) {
-      if (!val.type || val.type !== 'file') {
-        foldersOnly[key] = val;
-      }
-    }
-
-    LIVE_DRIVE = foldersOnly;
     applyIcons({ children: LIVE_DRIVE, name: 'root' });
     hideLoadingOverlay();
     showToast('✅ Dashboard synced with latest Drive files');
@@ -797,7 +787,7 @@ function buildSidebar(children, pathSoFar, depth) {
     const key = path.join('/');
     const isOpen = sidebarOpen.has(key);
     const isActive = JSON.stringify(activePath) === JSON.stringify(path);
-    const hasKids = Object.keys(node.children||{}).some(k => !node.children[k].type);
+    const hasKids = Object.keys(node.children||{}).some(k => node.children[k].type !== 'file');
     const fc = countFiles(node);
     const indent = depth > 0 ? `padding-left:${10 + depth*14}px` : '';
     h += `<div class="sidebar-item${isActive?' active':''}" style="${indent}" onclick='navTo(${JSON.stringify(path)})'>
@@ -874,7 +864,7 @@ function renderHome() {
     <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:14px;">All Categories</div>
     <div class="item-grid">`;
   for(const [name, node] of Object.entries(getData())) {
-    const sub = Object.keys(node.children||{}).filter(k=>!node.children[k].type).length;
+    const sub = Object.keys(node.children||{}).filter(k => node.children[k].type !== 'file').length;
     const fc = countFiles(node);
     h += `<div class="item-card" onclick='navTo(${JSON.stringify([name])})'>
       ${isAdmin ? `<a class="drive-chip" href="${driveUrl(node.id)}" target="_blank" onclick="event.stopPropagation()">☁️ Drive</a>` : ''}
@@ -892,7 +882,7 @@ function renderFolder(path) {
   const node = getNode(path); if(!node) return;
   renderBC(path);
   const ch = node.children||{};
-  const folders = Object.entries(ch).filter(([,v]) => !v.type);
+  const folders = Object.entries(ch).filter(([,v]) => v.type === 'folder' || (!v.type && v.children !== undefined));
   const files   = Object.entries(ch).filter(([,v]) => v.type === 'file');
   const dUrl = driveUrl(node.id);
   const name = path[path.length-1];
@@ -925,7 +915,7 @@ function renderFolder(path) {
     <div class="item-grid" style="margin-bottom:28px;">`;
     for(const [n, child] of folders) {
       const cp = [...path, n];
-      const sub = Object.keys(child.children||{}).filter(k=>!child.children[k].type).length;
+      const sub = Object.keys(child.children||{}).filter(k => child.children[k].type !== 'file').length;
       const fc = countFiles(child);
       h += `<div class="item-card" onclick='navTo(${JSON.stringify(cp)})'>
         ${isAdmin ? `<a class="drive-chip" href="${driveUrl(child.id)}" target="_blank" onclick="event.stopPropagation()">☁️ Drive</a>` : ''}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0063)file:///C:/Users/thinkpad/Downloads/prepoorbit_dashboard_2.html -->
+<!-- saved from url=(0063)file:///C:/Users/thinkpad/Downloads/prepoorbit_dashboard_3.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -803,14 +803,15 @@ function buildSidebar(children, pathSoFar, depth) {
 
 function renderSidebar() {
   const s = document.getElementById('sidebar');
+  const isAdmin = currentRole === 'admin';
   s.innerHTML = `<div class="sidebar-section">Library</div>` + buildSidebar(getData(), [], 0) +
-    `<div class="sidebar-section" style="margin-top:auto">Drive</div>
+    (isAdmin ? `<div class="sidebar-section" style="margin-top:auto">Drive</div>
      <div class="sidebar-item" onclick="window.open('https://drive.google.com/drive/folders/1TKqHzv3_56str4C9LlOX2eNpm6eEwBj8','_blank')">
        <span class="si-icon">☁️</span><span class="si-name">Open in Drive</span>
      </div>
-     ${currentRole==='admin' ? `<div class="sidebar-item" onclick="manualSync()">
+     <div class="sidebar-item" onclick="manualSync()">
        <span class="si-icon">🔄</span><span class="si-name">Sync Now</span>
-     </div>` : ''}`;
+     </div>` : '');
 }
 
 function navTo(path) {
